@@ -6,7 +6,7 @@ $borderRadius: 6px;
 $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 
-.container-signin{
+.container-signup{
     padding: 0 !important;
     background-color: wheat;
     display: flex;
@@ -22,9 +22,10 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
     .login-div{
         margin: auto;
         width: 25%;
-        min-height: 25%;
+        min-height: 40%;
         background-color: $div;
         border-radius: $borderRadius;
+        
 
         .login-div-input{
             margin: auto;
@@ -41,7 +42,7 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
             }
             h5{
                 text-align: left;
-                margin: 9px 0 2px 0 !important;
+                margin: 9px 0 2px 0!important;
                 color: $border;
                 font-family:$font;
             }
@@ -55,12 +56,9 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
                 color: white;
             }
             h4{
-                margin-top: 5px !important;
+                margin: 10px 0 0 0!important;
                 color: $orange;
-
-                a{
-                    color: rgb(0, 110, 255);
-                }
+                text-align: left;
             }
             
         }
@@ -70,7 +68,6 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
             width: 70%;
             margin: auto;
             justify-content: center;
-            justify-content: space-between;
             align-items: end; /* Dikeyde ortala */
             height: 50px;
             margin-bottom: 20px;
@@ -78,28 +75,16 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
             button{
                 width: 45%;
                 height: 30px;
-                background-color: $background;
-                border: 1px solid $orange;
+                background-color: $orange;
+                border: 1px solid $background;
                 border-radius: $borderRadius;
-                color: $orange;
+                color: black;
                 font-style: $font;
                 font-size: 1.3vw;
                 cursor: pointer;
                 transition: background-color 1s ease;
             }
             button:hover{
-                background-color: $orange;
-                border: 1px solid $orange;
-                border-radius: $borderRadius;
-                color: black;
-            }
-            .active{
-                background-color: $orange;
-                border: 1px solid $background;
-                border-radius: $borderRadius;
-                color: black;
-            }
-            .active:hover{
                 background-color: $background;
                 border: 1px solid $orange;
                 border-radius: $borderRadius;
