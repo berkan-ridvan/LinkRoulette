@@ -1,0 +1,85 @@
+$orange: #c96000;
+$border: #5b5b5b;
+$div: #272727;
+$background: #3e3e3e;
+$borderRadius: 6px;
+$boxMargin: 10px;
+$boxShadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+$font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+
+
+.category-box{
+    width: 100%;
+    height: 100%;
+
+    .box-add{
+        height: 50px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+
+        button{
+            width: 20%;
+            height: 45px;
+            background-color: $background;
+            border: 1px solid $orange;
+            border-radius: $borderRadius;
+            color: $orange;
+            font-style: $font;
+            font-size: 36px;
+            cursor: pointer;
+            transition: background-color 1s ease;
+        }
+        button:hover{
+            background-color: $orange;
+            border: 1px solid $orange;
+            border-radius: $borderRadius;
+            color: black;
+        }
+        input{
+            width: 80%;
+            height: 41px;
+            margin-left: 10px;
+            background-color: $background;
+            border-radius: $borderRadius;
+            border: 1px solid $orange !important;
+            color: white;
+        }
+    }
+
+    hr{
+        margin: 0px;
+        height: 5px;
+        width: 100%;
+        background-color: $background;
+        border: 0px;
+    }
+
+    .box-categories{
+        padding: 0 10px 10px 10px;
+        align-items: center;
+
+        button{
+            width: 100%;
+            height: 40px;
+            border-radius: $borderRadius;
+            background-color: $background;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            border: 1px solid $border;
+            padding-left: 10px;
+            color: #d4d4cf;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover{
+            background-color: $div;
+            border: 1px solid $orange;
+            border-radius: $borderRadius;
+            color: $orange;
+        }
+    }
+}
