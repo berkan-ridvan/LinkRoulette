@@ -1,10 +1,10 @@
-$orange: #c96000;
+$orange: #a0540c;
 $border: #5b5b5b;
-$div: #272727;
-$background: #3e3e3e;
+$div: rgba(41, 41, 41, 0.479);
+$background: #0c0c0c;
 $borderRadius: 6px;
 $boxMargin: 10px;
-$boxShadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+$boxShadow: 0 0 10px 5px rgba(26, 26, 26, 0.5);
 $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 
@@ -28,7 +28,7 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         button{
             width: 8%;
             height: 45px;
-            background-color: $background;
+            background-color: $div;
             border: 1px solid $orange;
             border-radius: $borderRadius;
             color: $orange;
@@ -46,7 +46,7 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         input{
             width: 30%;
             height: 41px;
-            background-color: $background;
+            background-color: $div;
             border-radius: $borderRadius;
             border: 1px solid $orange !important;
             color: white;
@@ -58,39 +58,60 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 
     hr{
-        margin: 0px;
-        height: 5px;
+        margin: 0 0 15px 0;
+        height: 4px;
         width: 100%;
         background-color: $background;
         border: 0px;
+        box-shadow: $boxShadow;
     }
 
     .box-categories{
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 0 15px 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+        padding: 0 15px 15px 15px;
 
-        button{
-            flex-grow: 1;
-            flex-basis: 180px;
-            flex-shrink: 0;
+        .box-categories-item{
             height: 150px;
             border-radius: $borderRadius;
-            background-color: $background;
+            background-color: $div;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            text-align: center;
-            border: 1px solid $border;
-            padding-left: 10px;
+            border: 0px solid $border;
             color: rgb(212, 212, 212);
+            box-shadow: $boxShadow;
             font-size: 20px;
             cursor: pointer;
-            margin: 15px 15px 0 0;
+            margin: 0;
+
+            h3{
+                width: 100%;
+                height: 40px;
+                margin: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                font-family: $font;
+                border-radius: 6px 6px 0 0;
+                border: 1px solid $border;
+                border-bottom: 0px;
+            }
+            textarea{
+                width: 98.2%;
+                border: 1px solid $border;
+                height: 100px;
+                border-radius: 0 0 6px 6px;
+                color: $border;
+                background-color: rgba(12, 12, 12, 0);
+                resize: none;
+            }
+
         }
-        button:hover{
-            background-color: $div;
-            border: 1px solid $orange;
+        .box-categories-item:hover{
+            background-color: #161616;
             border-radius: $borderRadius;
             color: $orange;
         }

@@ -13,16 +13,10 @@ const AddFilm = () => {
         </div>
         <hr />
         <div className="box-categories">
-          <button>Category Name 1</button>
-          <button>Category Name 2</button>
-          <button>Category Name 3</button>
-          <button>Category Name 4</button>
-          <button>Category Name 5</button>
-          <button>Category Name 1</button>
-          <button>Category Name 2</button>
-          <button>Category Name 5</button>
-          <button>Category Name 1</button>
-          <button>Category Name 2</button>
+          <div className='box-categories-item'>
+            <h3>Hızlı ve Öfkeli 1</h3>
+            <textarea name="" id="" >https://www.asdasdsadsda...</textarea>
+          </div>
           
 
         </div>

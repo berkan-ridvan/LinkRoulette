@@ -1,10 +1,10 @@
-$orange: #c96000;
+$orange: #a0540c;
 $border: #5b5b5b;
-$div: #272727;
-$background: #3e3e3e;
+$div: rgba(41, 41, 41, 0.479);
+$background: #0c0c0c;
 $borderRadius: 6px;
 $boxMargin: 10px;
-$boxShadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+$boxShadow: 0 0 10px 5px rgba(26, 26, 26, 0.5);
 $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 
@@ -22,7 +22,7 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         button{
             width: 20%;
             height: 45px;
-            background-color: $background;
+            background-color: $div;
             border: 1px solid $orange;
             border-radius: $borderRadius;
             color: $orange;
@@ -41,7 +41,7 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             width: 80%;
             height: 41px;
             margin-left: 10px;
-            background-color: $background;
+            background-color: $div;
             border-radius: $borderRadius;
             border: 1px solid $orange !important;
             color: white;
@@ -50,10 +50,11 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
     hr{
         margin: 0px;
-        height: 5px;
+        height: 4px;
         width: 100%;
         background-color: $background;
         border: 0px;
+        box-shadow: $boxShadow;
     }
 
     .box-categories{
@@ -64,13 +65,14 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             width: 100%;
             height: 40px;
             border-radius: $borderRadius;
-            background-color: $background;
+            background-color: $div;
             display: flex;
             align-items: center;
             text-align: center;
-            border: 1px solid $border;
-            padding-left: 10px;
+            box-shadow: $boxShadow;
+            border: 0;
             color: #d4d4cf;
+            padding-left: 10px;
             font-size: 20px;
             cursor: pointer;
             margin-top: 10px;

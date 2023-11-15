@@ -1,6 +1,6 @@
-$orange: #c96000;
+$orange: #a0540c;
 $border: #5b5b5b;
-$div: #272727;
+$div: rgba(41, 41, 41, 0.479);
 $background: #3e3e3e;
 $borderRadius: 6px;
 $boxMargin: 10px;
@@ -43,7 +43,7 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         button{
             width: 45%;
             height: 30px;
-            background-color: $background;
+            background-color: $div;
             border: 1px solid $orange;
             border-radius: $borderRadius;
             color: $orange;
