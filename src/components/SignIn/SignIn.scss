@@ -1,6 +1,6 @@
 $orange: #c96000;
 $border: #5b5b5b;
-$div: #272727;
+$div: hsl(0, 0%, 15% , 0.95);
 $background: #3e3e3e;
 $borderRadius: 6px;
 $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -21,10 +21,11 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
 
     .login-div{
         margin: auto;
-        width: 25%;
+        min-width: 25%;
         min-height: 25%;
         background-color: $div;
         border-radius: $borderRadius;
+        padding: 15px 5px;
 
         .login-div-input{
             margin: auto;

@@ -21,11 +21,11 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
 
     .login-div{
         margin: auto;
-        width: 25%;
+        min-width: 25%;
         min-height: 40%;
         background-color: $div;
         border-radius: $borderRadius;
-        
+        padding: 15px 5px;
 
         .login-div-input{
             margin: auto;
