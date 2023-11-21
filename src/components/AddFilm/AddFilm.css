@@ -1,0 +1,82 @@
+.add-film-box {
+  width: 100%;
+  height: 100%;
+}
+.add-film-box .box-add {
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.add-film-box .box-add h3 {
+  color: #c96000;
+  width: 42%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 24px;
+}
+.add-film-box .box-add button {
+  width: 8%;
+  height: 45px;
+  background-color: #3e3e3e;
+  border: 1px solid #c96000;
+  border-radius: 6px;
+  color: #c96000;
+  font-style: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 36px;
+  cursor: pointer;
+  transition: background-color 1s ease;
+}
+.add-film-box .box-add button:hover {
+  background-color: #c96000;
+  border: 1px solid #c96000;
+  border-radius: 6px;
+  color: black;
+}
+.add-film-box .box-add input {
+  width: 30%;
+  height: 41px;
+  background-color: #3e3e3e;
+  border-radius: 6px;
+  border: 1px solid #c96000 !important;
+  color: white;
+  margin: 0px 10px 0 0;
+}
+.add-film-box .box-add .box-add-name {
+  width: 20%;
+}
+.add-film-box hr {
+  margin: 0px;
+  height: 5px;
+  width: 100%;
+  background-color: #3e3e3e;
+  border: 0px;
+}
+.add-film-box .box-categories {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0 15px 15px;
+}
+.add-film-box .box-categories button {
+  flex-grow: 1;
+  flex-basis: 180px;
+  flex-shrink: 0;
+  height: 150px;
+  border-radius: 6px;
+  background-color: #3e3e3e;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #5b5b5b;
+  padding-left: 10px;
+  color: rgb(212, 212, 212);
+  font-size: 20px;
+  cursor: pointer;
+  margin: 15px 15px 0 0;
+}
+.add-film-box .box-categories button:hover {
+  background-color: #272727;
+  border: 1px solid #c96000;
+  border-radius: 6px;
+  color: #c96000;
+}/*# sourceMappingURL=AddFilm.css.map */

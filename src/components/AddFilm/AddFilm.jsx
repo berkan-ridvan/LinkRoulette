@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './AddFilm.scss'
+import { GlobalContext } from '../../context/GlobalState'
 
 const AddFilm = () => {
+  const {selectedCategory} = useContext(GlobalContext);
+
   return (
     <div>
       <div className="add-film-box">
         <div className="box-add">
-          <h3>Category Name 1</h3>
+          <h3>{selectedCategory ? selectedCategory.categoryTitle : 'Kategori Seçiniz'}</h3>
           <input className='box-add-name' placeholder='Film Name...' type="text" />
           <input placeholder='Film Link...' type="text" />
           <button>+</button>
