@@ -100,7 +100,7 @@ const SignIn = () => {
           </div>
           <div className="login-div-button">
             <button type='submit' className='active'>Giriş Yap</button>
-            <button>Kayıt Ol</button>
+            <button navigate="/MainComponent">Kayıt Ol</button>
           </div>
           {showSuccesAlert ? <div>
             <div>

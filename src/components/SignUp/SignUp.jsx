@@ -41,7 +41,7 @@ const SignUp = () => {
 
   const initialValues = {
     firstName: "",
-    
+
     email: "",
     password: "",
     passwordAgain: "",
@@ -69,11 +69,12 @@ const SignUp = () => {
   return (
 
     <div className='container-signup'>
-      {isShow ? <div>
+      {isShow ?
         <div>
-          <p>Kayıt Başarılı Giriş Sayfasına Yönlendiriliyorsunuz!  <span>2sn</span></p>
-        </div>
-      </div> : ""}
+          <div>
+            <p>Kayıt Başarılı Giriş Sayfasına Yönlendiriliyorsunuz!  <span>2sn</span></p>
+          </div>
+        </div> : ""}
       <form onSubmit={formik.handleSubmit}>
         <div className="login-div">
           <div className="login-div-input">
@@ -104,44 +105,43 @@ const SignUp = () => {
             {formik.touched.email && formik.errors.email ? (
               <div>{formik.errors.email}</div>
             ) : null}
+            <h5>Şifre :</h5>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="**********"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.password && formik.errors.password ? (
+              <div>
+                {formik.errors.password}
+              </div>
+            ) : null}
+            <h5>Şifre :</h5>
+            <input
+              type="password"
+              name="passwordAgain"
+              id="passwordAgain"
+              placeholder="**********"
+              value={formik.values.passwordAgain}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.passwordAgain &&
+              formik.errors.passwordAgain ? (
+              <div>
+                {formik.errors.passwordAgain}
+              </div>
+            ) : null}
           </div>
-          <h5>Şifre :</h5>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="**********"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <div>
-              {formik.errors.password}
-            </div>
-          ) : null}
-          <h5>Şifre :</h5>
-          <input
-            type="password"
-            name="passwordAgain"
-            id="passwordAgain"
-            placeholder="**********"
-            value={formik.values.passwordAgain}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.passwordAgain &&
-            formik.errors.passwordAgain ? (
-            <div>
-              {formik.errors.passwordAgain}
-            </div>
-          ) : null}
-
           <div className="login-div-button">
-          <button className='active' type='submit'>Kayıt Ol</button>
+            <button className='active' type='submit'>Kayıt Ol</button>
+          </div>
         </div>
-        </div>
-        
+
       </form>
     </div>
 

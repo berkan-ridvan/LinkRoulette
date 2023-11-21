@@ -25,12 +25,12 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
         min-height: 25%;
         background-color: $div;
         border-radius: $borderRadius;
-        padding: 15px 5px;
+        padding: 15px 45px;
 
         .login-div-input{
             margin: auto;
             text-align: center;
-            width: 70%;
+            width: 200px;
             height: 70%;
 
             h3{
@@ -71,20 +71,20 @@ $font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Ar
             width: 70%;
             margin: auto;
             justify-content: center;
-            justify-content: space-between;
             align-items: end; /* Dikeyde ortala */
             height: 50px;
             margin-bottom: 20px;
+            gap: 10px;
 
             button{
-                width: 45%;
+                width: 130px;
                 height: 30px;
                 background-color: $background;
                 border: 1px solid $orange;
                 border-radius: $borderRadius;
                 color: $orange;
                 font-style: $font;
-                font-size: 1.3vw;
+                font-size: 14px;
                 cursor: pointer;
                 transition: background-color 1s ease;
             }
