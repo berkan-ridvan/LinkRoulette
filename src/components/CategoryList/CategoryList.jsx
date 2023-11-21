@@ -37,12 +37,13 @@ const CategoryList = () => {
     try {
       await addDoc(collection(db, "categories"), {
         categoryTitle: categoryName,
-        Links: []
+        Links: [],
+        films: []
       });
       setCategoryName("");
       fetchCategories();
     } catch (err) {
-      conosle.log("liste eklenirken hata oluştu:" + err);
+      console.log("liste eklenirken hata oluştu:" + err);
     }
   }
 
