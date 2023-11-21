@@ -4,7 +4,7 @@ $div: #272727;
 $background: #3e3e3e;
 $borderRadius: 6px;
 $boxMargin: 10px;
-$boxShadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+$boxShadow: 0 0 10px 7px rgba(0, 0, 0, 0.082);
 $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 
@@ -24,7 +24,8 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             height: 45px;
             background-color: $background;
             border: 1px solid $orange;
-            border-radius: $borderRadius;
+            border-left: 0;
+            border-radius: 0 $borderRadius $borderRadius 0;
             color: $orange;
             font-style: $font;
             font-size: 36px;
@@ -34,15 +35,15 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         button:hover{
             background-color: $orange;
             border: 1px solid $orange;
-            border-radius: $borderRadius;
+            border-left: 0;
+            border-radius: 0 $borderRadius $borderRadius 0;
             color: black;
         }
         input{
             width: 80%;
             height: 41px;
-            margin-left: 10px;
             background-color: $background;
-            border-radius: $borderRadius;
+            border-radius: $borderRadius 0 0 $borderRadius;
             border: 1px solid $orange !important;
             color: white;
         }
@@ -60,8 +61,8 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         padding: 0 10px 10px 10px;
         align-items: center;
 
-        button{
-            width: 100%;
+        .box-categories-item{
+            width: 97%;
             height: 40px;
             border-radius: $borderRadius;
             background-color: rgba(29, 29, 29, 0.404);
@@ -74,8 +75,12 @@ $font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 20px;
             cursor: pointer;
             margin-top: 10px;
+
+            h3{
+                font: $font;
+            }
         }
-        button:hover{
+        .box-categories-item:hover{
             background-color: $div;
             border: 1px solid $orange;
             border-radius: $borderRadius;
