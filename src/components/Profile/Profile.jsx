@@ -1,18 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
 import './Profile.scss';
 import profilImage from '../../assets/profil.png';
+import { onAuthStateChanged , getAuth } from 'firebase/auth';
+import { getDoc , getFirestore , doc } from 'firebase/firestore';
 
 const Profile = () => {
+  const [firstName, setFirstName] = useState("");
+
+  const db = getFirestore();
+  const auth = getAuth();
+
+  const navigate = () => {
+    window.location = "/signIn"
+  }
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        getDoc(userRef).then(docSnap => {
+          if (docSnap.exists()) {
+            setFirstName(docSnap.data().firstName)
+          } else {
+            console.log("kullanıcı verisi Bulunamadı")
+          }
+        })
+      }
+    })
+    return () => unSubscribe();
+  }, [auth])
+
   return (
     <div>
       <div className="profile-box">
         <div className="box-photo">
-          <img src={profilImage} alt="sdaasdasd" />
-          <h3>React Profile</h3>
+          <img src={profilImage} alt="Profil Resmi" />
+          <h3>{firstName || 'Yükleniyor...'}</h3>
         </div>
         <div className="box-button">
           <button>Profil</button>
-          <button>Ayarlar</button>
+          <button onClick={navigate}>Çıkış</button>
         </div>
       </div>
     </div>
