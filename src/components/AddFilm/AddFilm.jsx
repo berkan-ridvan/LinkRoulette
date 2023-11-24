@@ -13,27 +13,28 @@ const AddFilm = () => {
 
   const [filmName, setFilmName] = useState("");
   const [filmLink, setFilmLink] = useState("");
-  const [filmList , setFilmList] = useState([]);
-  const [filmLinkList , setFilmLinkList]  = useState([]);
+  const [filmList, setFilmList] = useState([]);
+  const [filmLinkList, setFilmLinkList] = useState([]);
+  const [refreshFilm, setRefreshFilm] = useState(false);
 
   useEffect(() => {
-    if(selectedCategory){
-      const categoryRef = doc(db , "categories" , selectedCategory.id);
+    if (selectedCategory) {
+      const categoryRef = doc(db, "categories", selectedCategory.id);
 
       getDoc(categoryRef).then(docSnap => {
-        if(docSnap.exists()){
+        if (docSnap.exists()) {
           const data = docSnap.data();
           setFilmList(data.films || []);
           setFilmLinkList(data.Links || []);
-        }else{
+        } else {
           console.log("istenilen belge bulunamadı");
 
         }
       }).catch(err => {
-        console.log("veri çekerken hata oluştu:" +err);
+        console.log("veri çekerken hata oluştu:" + err);
       })
     }
-  },[selectedCategory])
+  }, [selectedCategory, refreshFilm])
 
   const handleAddFilm = async (e) => {
     e.preventDefault();
@@ -51,8 +52,19 @@ const AddFilm = () => {
 
       setFilmName("");
       setFilmLink("");
+      setRefreshFilm(!refreshFilm)
     } catch (err) {
       console.log("film ismi veya link eklerken hata oluştu:" + err)
+    }
+  }
+
+  const handleOpenRandomFilm = () => {
+    if (filmLinkList.length > 0) {
+      const randomIndex = Math.floor(Math.random() * filmLinkList.length)
+      const randomLink = filmLinkList[randomIndex];
+      window.open(randomLink, '_blank');
+    } else {
+      console.log("link açılırken sorun oluştu");
     }
   }
 
@@ -62,9 +74,9 @@ const AddFilm = () => {
       <div className="add-film-box">
         <div className="box-add">
           <h3>{selectedCategory ? selectedCategory.categoryTitle : 'Kategori Seçiniz'}</h3>
-          <form className="form" onSubmit={handleAddFilm}>
+          <form onSubmit={handleAddFilm}>
             <input
-              className="box-add-name"
+              className='box-add-name'
               value={filmName}
               onChange={(e) => setFilmName(e.target.value)}
               placeholder='Film Name...'
@@ -80,12 +92,16 @@ const AddFilm = () => {
           </form>
         </div>
         <hr />
+
         <div className="box-categories">
-          {filmList.map((item , index) => (
-         <div className='box-categories-item'>
-            <h3 key={index}>{item}</h3>
-            {/* <textarea name="" id="" >deneme</textarea> */}
+          <div>
+            <button className="random-film-button" onClick={handleOpenRandomFilm}>
+              Rastgele Film aç
+            </button>
           </div>
+
+          {filmList.map((item, index) => (
+            <li key={index}>{item}</li>
           ))}
         </div>
       </div>

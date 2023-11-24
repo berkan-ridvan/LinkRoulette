@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { collection, addDoc, getFirestore, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getFirestore, getDocs, query, where } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { app } from "../../firebaseconfig"
 import { GlobalContext } from '../../context/GlobalState';
 import { useContext } from 'react';
@@ -10,9 +11,10 @@ import './CategoryList.scss'
 const CategoryList = () => {
   const [categoryName, setCategoryName] = useState("");
   const [categoryList, setCategoryList] = useState([]);
- // const [selectedCategory, setSelectedCategory] = useState(null);
+  // const [selectedCategory, setSelectedCategory] = useState(null);
 
   const db = getFirestore(app);
+  const auth = getAuth(app)
 
   const { setCategory } = useContext(GlobalContext);
 
@@ -20,23 +22,19 @@ const CategoryList = () => {
     setCategoryName(e.target.value);
   }
 
-  const fetchCategories = async () => {
-    const querySnapshot = await getDocs(collection(db, "categories"))
-    setCategoryList(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-  }
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
 
   const handleAddCategoryFirebase = async (e) => {
     e.preventDefault();
 
-    if (categoryName.trim() === '') return;
+    const user = auth.currentUser
+
+    if (!user || categoryName.trim() === '') return;
 
     try {
       await addDoc(collection(db, "categories"), {
         categoryTitle: categoryName,
+        userId: user.uid,
         Links: [],
         films: []
       });
@@ -52,18 +50,43 @@ const CategoryList = () => {
     setCategory(category);
   }
 
+  const fetchCategories = async () => {
+    const user = auth.currentUser
+    if (!user) {
+      return;
+    }
+    try {
+      const querySnapshot = await getDocs(query(collection(db, "categories"), where("userId", "==", user.uid)))
+      setCategoryList(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+    }
+    catch (err) {
+      console.log("kategori listesi veriler çekilerken hata:" + err)
+    }
+
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth , async (user) => {
+          if(user) {
+            fetchCategories()
+          } else {
+            setCategoryList([])
+          }
+    })
+  }, []);
+
   return (
     <div>
       <div className="category-box">
         <div className="box-add">
-          <input onChange={handleInputChange} placeholder='Kategori Oluşturunuz...' type="text" />
+          <input value={categoryName} onChange={handleInputChange} placeholder='Kategori Oluşturunuz...' type="text" />
           <button onClick={handleAddCategoryFirebase}>+</button>
         </div>
         <hr />
         <div className="box-categories">
-            {categoryList.length > 0 ? categoryList.map((listItem, index) => (
-              <div  className='box-categories-item' onClick={() => { handleCategoryClick(listItem) }} key={index}>{listItem.categoryTitle}</div>
-            )) : "kategori yok"}
+          {categoryList.length > 0 ? categoryList.map((listItem, index) => (
+            <div className='box-categories-item' onClick={() => { handleCategoryClick(listItem) }} key={index}>{listItem.categoryTitle}</div>
+          )) : "kategori yok"}
         </div>
       </div>
 
