@@ -48,6 +48,10 @@ const SignIn = () => {
     password: "",
   }
 
+  const goTosignUpPage = () => {
+    navigate("/signUp")
+  }
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Geçerli bir e-posta adresi girin.")
@@ -100,7 +104,7 @@ const SignIn = () => {
           </div>
           <div className="login-div-button">
             <button type='submit' className='active'>Giriş Yap</button>
-            <button navigate="/MainComponent">Kayıt Ol</button>
+            <button onClick={goTosignUpPage}>Kayıt Ol</button>
           </div>
           {showSuccesAlert ? <div>
             <div>

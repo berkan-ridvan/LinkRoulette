@@ -2,19 +2,18 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './Profile.scss';
 import profilImage from '../../assets/profil.png';
-import { onAuthStateChanged , getAuth } from 'firebase/auth';
+import { onAuthStateChanged , getAuth , signOut } from 'firebase/auth';
 import { getDoc , getFirestore , doc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const [firstName, setFirstName] = useState("");
 
   const db = getFirestore();
   const auth = getAuth();
+  const navigate = useNavigate()
 
-  const navigate = () => {
-    window.location = "/signIn"
-  }
-
+ 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, user => {
       if (user) {
@@ -31,6 +30,15 @@ const Profile = () => {
     return () => unSubscribe();
   }, [auth])
 
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      navigate("/signIn")
+      console.log("çıkış işlemi yapıldı");
+    }).catch((err) => {
+         console.log("çıkış işlemi yapılamadı" + err);
+    })
+  }
+
   return (
     <div>
       <div className="profile-box">
@@ -40,7 +48,7 @@ const Profile = () => {
         </div>
         <div className="box-button">
           <button>Profil</button>
-          <button onClick={navigate}>Çıkış</button>
+          <button onClick={handleSignOut}>Çıkış</button>
         </div>
       </div>
     </div>

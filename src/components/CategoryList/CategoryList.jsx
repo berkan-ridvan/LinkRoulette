@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { collection, addDoc, getFirestore, getDocs, query, where } from 'firebase/firestore';
+import { collection, addDoc, getFirestore, getDocs, query, where, deleteDoc , doc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { app } from "../../firebaseconfig"
 import { GlobalContext } from '../../context/GlobalState';
@@ -11,7 +11,6 @@ import './CategoryList.scss'
 const CategoryList = () => {
   const [categoryName, setCategoryName] = useState("");
   const [categoryList, setCategoryList] = useState([]);
-  // const [selectedCategory, setSelectedCategory] = useState(null);
 
   const db = getFirestore(app);
   const auth = getAuth(app)
@@ -21,8 +20,6 @@ const CategoryList = () => {
   const handleInputChange = (e) => {
     setCategoryName(e.target.value);
   }
-
-
 
   const handleAddCategoryFirebase = async (e) => {
     e.preventDefault();
@@ -66,14 +63,25 @@ const CategoryList = () => {
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth , async (user) => {
-          if(user) {
-            fetchCategories()
-          } else {
-            setCategoryList([])
-          }
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        fetchCategories()
+      } else {
+        setCategoryList([])
+      }
     })
   }, []);
+
+  const handleDeleteCategory = async (categoryId) => {
+    try {
+      const docRef = doc(db, "categories", categoryId);
+      await deleteDoc(docRef);
+      console.log("kategori silindi");
+      fetchCategories();
+    } catch (err) {
+      console.log("kategori silinmedi hata var" + err)
+    }
+  }
 
   return (
     <div>
@@ -85,7 +93,7 @@ const CategoryList = () => {
         <hr />
         <div className="box-categories">
           {categoryList.length > 0 ? categoryList.map((listItem, index) => (
-            <div className='box-categories-item' onClick={() => { handleCategoryClick(listItem) }} key={index}>{listItem.categoryTitle}</div>
+            <div className='box-categories-item' onClick={() => { handleCategoryClick(listItem) }} key={index}><p>{listItem.categoryTitle}</p><button onClick={() => handleDeleteCategory(listItem.id)}>sil</button></div>
           )) : "kategori yok"}
         </div>
       </div>
